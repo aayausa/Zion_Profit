@@ -1,7 +1,9 @@
+import os
 import telegram
 from telegram.ext import Application, CommandHandler
 
-BOT_TOKEN = "7749144104:AAGNwAayxnerJY-pSe0dR4y4YuKplDiuq9E"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+VIDEO_URL = os.getenv("VIDEO_URL")
 
 async def start(update, context):
     await context.bot.send_message(
@@ -10,7 +12,7 @@ async def start(update, context):
     )
     await context.bot.send_video(
         chat_id=update.effective_chat.id,
-        video="URL_ВАШЕГО_ВИДЕО"
+        video=VIDEO_URL
     )
 
 application = Application.builder().token(BOT_TOKEN).build()
